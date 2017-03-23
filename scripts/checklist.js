@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
     'use strict';
 
     var App = window.App || {};
@@ -15,15 +15,15 @@
         }
     }
 
-    CheckList.prototype.addClickHandler = function (fn) {
-        this.$element.on('click', 'input', function (event) {
+    CheckList.prototype.addClickHandler = function(fn) {
+        this.$element.on('click', 'input', function(event) {
             var email = event.target.value;
             this.removeRow(email);
             fn(email);
         }.bind(this));
     };
 
-    CheckList.prototype.addRow = function (coffeeOrder) {
+    CheckList.prototype.addRow = function(coffeeOrder) {
         //Remove any existing rows that match the email address
         this.removeRow(coffeeOrder.emailAddress);
 
@@ -34,9 +34,10 @@
         this.$element.append(rowElement.$element);
     };
 
-    CheckList.prototype.removeRow = function (email) {
+    CheckList.prototype.removeRow = function(email) {
         this.$element.find('[value="' + email + '"]').closest('[data-coffee-order="checkbox"]').remove();
     };
+
     function Row(coffeeOrder) {
         var $div = $('<div></div>', {
             'data-coffee-order': 'checkbox',
@@ -51,13 +52,13 @@
         });
 
         var description = coffeeOrder.size + ' ';
-        if(coffeeOrder.flavor) {
+        if (coffeeOrder.flavor) {
             description += coffeeOrder.flavor + ' ';
         }
 
         description += coffeeOrder.coffee + ', ';
         description += ' (' + coffeeOrder.emailAddress + ')';
-        description += ' [' + coffeeOrder.strength + 'x]' ;
+        description += ' [' + coffeeOrder.strength + 'x]';
 
         $label.append($checkbox);
         $label.append(description);
@@ -68,4 +69,4 @@
 
     App.CheckList = CheckList;
     window.App = App;
-}) (window);
+})(window);

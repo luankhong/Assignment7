@@ -34,9 +34,9 @@
         });
     };
 
-    FormHandler.prototype.addInputHandler = function (fn, fn2) {
+    FormHandler.prototype.addInputHandler = function(fn, fn2) {
         console.log('Setting input handler for form');
-        this.$formElement.on('input', '[name="emailAddress"]', function (event) {
+        this.$formElement.on('input', '[name="emailAddress"]', function(event) {
             var emailAddress = event.target.value;
             var message = '';
             if (fn(emailAddress)) {
@@ -56,13 +56,13 @@
 
             var message = '';
 
-            if(fn2(orderText, strength)) {
+            if (fn2(orderText, strength)) {
                 console.log('true   Text: ' + orderText + ' | Strength: ' + strength);
                 event.target.setCustomValidity('');
                 strengthSlider.setCustomValidity('');
             } else {
                 console.log('false   Text: ' + orderText + ' | Strength: ' + strength);
-                if(strength > 20) {
+                if (strength > 20) {
                     message = 'Order contains decaf but caffeine strength > 20 ';
                 } else {
                     message = 'Order does not contain decaf but caffeine strength is <= 20';
@@ -80,13 +80,13 @@
 
             var message = '';
 
-            if(fn2(orderText, strength)) {
+            if (fn2(orderText, strength)) {
                 console.log('true   Text: ' + orderText + ' | Strength: ' + strength);
                 event.target.setCustomValidity('');
                 orderTextField.setCustomValidity('');
             } else {
                 console.log('false   Text: ' + orderText + ' | Strength: ' + strength);
-                if(strength > 20) {
+                if (strength > 20) {
                     message = 'Caffeine Strength is > 20 but order contain decaf ';
                 } else {
                     message = 'Caffeine Strength is <= 20 but order DOES NOT contain decaf';
